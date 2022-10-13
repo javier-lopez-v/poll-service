@@ -16,10 +16,10 @@ Service of poll for client
 # Dependencies
   * Spring boot 2.7.4
   * Java 17
-  * PostgreSQL
+  * PostgreSQL 12.11
 
 # Run
-  * Git clone 
+  * git clone https://github.com/javier-lopez-v/poll-service.git
   * cd poll-service 
   * mvn spring-boot:run 
 
