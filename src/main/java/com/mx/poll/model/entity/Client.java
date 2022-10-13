@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.mx.poll.model.ClientDto;
 import com.mx.poll.model.ObservationResponse;
 import com.mx.poll.model.OptionResponse;
@@ -45,12 +46,13 @@ public class Client {
 	@JoinColumn(name = "id_client")
 	private List<Poll> polls;
 
+	@JsonIgnore
 	public ClientDto getClientResponse() {
 
 		return new ClientDto(this.idCliente, this.name, this.polls.stream()
 				.map(poll -> new PollResponse(poll.getTitle(), poll.getDate(), poll.getService(), poll.isStatus(),
 						poll.getOptions().stream()
-								.map(option -> new OptionResponse(option.getQuestion(), option.getSelection()))
+								.map(option -> new OptionResponse(option.getQuestion(), option.getSelectionEnum()))
 								.collect(Collectors.toList()),
 						poll.getObservations().stream()
 								.map(observation -> new ObservationResponse(observation.getObservationInfo()))
@@ -65,7 +67,5 @@ public class Client {
 		}
 		return this;
 	}
-
-
 
 }

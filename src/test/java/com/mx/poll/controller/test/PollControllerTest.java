@@ -16,10 +16,12 @@ import org.springframework.test.context.TestPropertySource;
 import com.mx.poll.controller.PollController;
 import com.mx.poll.model.ClientDto;
 import com.mx.poll.model.GenericResponse;
+import com.mx.poll.model.entity.Client;
 import com.mx.poll.service.PollService;
 
 @SpringBootTest
 @TestPropertySource(locations = "classpath:application-test.properties")
+
 @AutoConfigureTestDatabase
 class PollControllerTest {
 
@@ -41,7 +43,7 @@ class PollControllerTest {
 	void createUserPollTest() {
 
 		ClientDto client = new ClientDto(1L, null, null);
-		GenericResponse<String> genericResponse = new GenericResponse<>(true, 200, "", "");
+		GenericResponse<Client> genericResponse = new GenericResponse<>(true, 200, "", null);
 
 		when(pollService.createUserPoll(client)).thenReturn(genericResponse);
 		assertEquals(HttpStatus.OK, pollController.createUserPoll(client).getStatusCode());
@@ -56,7 +58,6 @@ class PollControllerTest {
 		when(pollService.updateUserPoll(1L, client)).thenReturn(genericResponse);
 		assertEquals(HttpStatus.OK, pollController.updateClientPoll(1L, client).getStatusCode());
 	}
-
 
 	@Test
 	void deleteClientPollTest() {

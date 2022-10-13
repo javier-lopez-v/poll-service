@@ -17,7 +17,19 @@ Service of poll for client
   * Spring boot 2.7.4
   * Java 17
   * PostgreSQL 12.11
+## Application
+The application itself can be customized by the next configuration:
 
+A configuration example to run this service from local, : Modify datasource postgres in the file application.properties:
+```properties
+...
+
+spring.datasource.url=jdbc:postgresql://YOUR_HOST_BD:5432/YOUR_DATA_BASE
+spring.datasource.username=YOUR_USER
+spring.datasource.password=YOUR_PASSWORD
+
+...
+```
 # Run
   * git clone https://github.com/javier-lopez-v/poll-service.git
   * cd poll-service 
@@ -68,11 +80,11 @@ With its corresponding response:
         "options": [
           {
             "question": "¿consideras juata la tasa de interes?",
-            "selection": "A FAVOR"
+            "selection": "A_FAVOR"
           },
           {
             "question": "¿te a servico el credito",
-            "selection": "A FAVOR"
+            "selection": "A_FAVOR"
           }
         ],
         "observation": [
@@ -93,7 +105,7 @@ With its corresponding response:
 
 | method      | end-point                   | parameters  | body  |
 | ----------- | -----------                 | ----------- | ----------- |
-| ``POST``    | ``/poll``                   | n/a         | ``{"name":"mario","polls":[{"title":"encuesta credito","date":"2022-10-10","service":"service 1","options":[{"question":"¿consideras juata la tasa de interes?","selection":"A FAVOR"},{"question":"¿te a servico el credito","selection":"A FAVOR"}],"observation":[{"observationInfo":"montos mas altos"},{"observationInfo":"plazos mas largos"}]}]}`` |
+| ``POST``    | ``/poll``                   | n/a         | ``{"name":"mario","polls":[{"title":"encuesta credito","date":"2022-10-10","service":"service 1","options":[{"question":"¿consideras juata la tasa de interes?","selection":"A_FAVOR"},{"question":"¿te a servico el credito","selection":"A_FAVOR"}],"observation":[{"observationInfo":"montos mas altos"},{"observationInfo":"plazos mas largos"}]}]}`` |
 
 
 The next example represents a request:
@@ -113,11 +125,11 @@ curl -X 'POST' \
 				"options": [
 					{
 						"question": "¿consideras juata la tasa de interes?",
-						"selection": "A FAVOR"
+						"selection": "A_FAVOR"
 					},
 					{
 						"question": "¿te a servico el credito",
-						"selection": "A FAVOR"
+						"selection": "A_FAVOR"
 					}
 				],
 				"observation": [
@@ -137,10 +149,46 @@ With its corresponding response:
 
 ```json
 {
-  "successful": true,
-  "code": 200,
-  "message": "Success",
-  "payload": "client created successfully"
+	"successful": true,
+	"code": 200,
+	"message": "Success",
+	"payload": {
+		"idCliente": 3,
+		"name": "pepe",
+		"polls": [
+			{
+				"idPoll": 3,
+				"title": "encuesta credito",
+				"date": "2022-10-13T20:32:15.768+00:00",
+				"service": "credit",
+				"status": false,
+				"observations": [
+					{
+						"idObservation": 5,
+						"observationInfo": "montos mas altos"
+					},
+					{
+						"idObservation": 6,
+						"observationInfo": "plazos mas largos"
+					}
+				],
+				"options": [
+					{
+						"idOption": 5,
+						"question": "¿consideras juata la tasa de interes?",
+						"selection": "A_FAVOR",
+						"selectionE": "A_FAVOR"
+					},
+					{
+						"idOption": 6,
+						"question": "¿te a servico el credito",
+						"selection": "A_FAVOR",
+						"selectionE": "A_FAVOR"
+					}
+				]
+			}
+		]
+	}
 }
 ```
 
@@ -149,7 +197,7 @@ With its corresponding response:
 
 | method      | end-point                   | parameters  | body  |
 | ----------- | -----------                 | ----------- | ----------- |
-| ``PUT``     | ``/poll/client/{id}``       | id          | ``{"name":"jose","polls":[{"title":"encuesta credito","date":"2022-10-10","service":"service 1","options":[{"question":"¿consideras juata la tasa de interes?","selection":"A FAVOR"},{"question":"¿te a servico el credito","selection":"A FAVOR"}],"observation":[{"observationInfo":"montos mas altos"},{"observationInfo":"plazos mas largos"}]}]}`` |
+| ``PUT``     | ``/poll/client/{id}``       | id          | ``{"name":"jose","polls":[{"title":"encuesta credito","date":"2022-10-10","service":"service 1","options":[{"question":"¿consideras juata la tasa de interes?","selection":"A_FAVOR"},{"question":"¿te a servico el credito","selection":"A_FAVOR"}],"observation":[{"observationInfo":"montos mas altos"},{"observationInfo":"plazos mas largos"}]}]}`` |
 
 
 The next example represents a request:
@@ -169,11 +217,11 @@ curl -X 'PUT' \
 			"options": [
 				{
 					"question": "¿consideras juata la tasa de interes?",
-					"selection": "A FAVOR"
+					"selection": "A_FAVOR"
 				},
 				{
 					"question": "¿te a servico el credito",
-					"selection": "A FAVOR"
+					"selection": "A_FAVOR"
 				}
 			],
 			"observation": [
@@ -208,11 +256,11 @@ With its corresponding response:
         "options": [
           {
             "question": "¿consideras juata la tasa de interes?",
-            "selection": "A FAVOR"
+            "selection": "A_FAVOR"
           },
           {
             "question": "¿te a servico el credito",
-            "selection": "A FAVOR"
+            "selection": "A_FAVOR"
           }
         ],
         "observation": [

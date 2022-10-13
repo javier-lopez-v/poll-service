@@ -1,5 +1,5 @@
 package com.mx.poll.model;
 
-public record OptionResponse(String question, String selection) {
+public record OptionResponse(String question, Selection selection) {
 
 }

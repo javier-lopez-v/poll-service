@@ -96,11 +96,20 @@ class ModelTest {
 
 		option.setIdOption(null);
 		option.setQuestion(null);
-		option.setSelection(null);
 		option.getIdOption();
 		option.getQuestion();
 		option.getSelection();
 
+		option.setSelection("EN CONTRA");
+		option.getSelectionEnum();
+		option.setSelection("PREFIERO NO CONTESTAR");
+		option.getSelectionEnum();
+
+		option.setSelection("PREFIERO NO sdf");
+
+		assertThrows(IllegalArgumentException.class, () -> {
+			option.getSelectionEnum();
+		});
 		assertNotNull(option);
 
 	}

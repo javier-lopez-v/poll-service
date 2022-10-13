@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mx.poll.model.Selection;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +33,20 @@ public class Option {
 	private String question;
 
 	@Column(name = "selection")
-	//@Enumerated(EnumType.STRING)
 	private String selection;
+
+	@JsonIgnore
+	public Selection getSelectionEnum() {
+
+		return switch (this.selection) {
+		case "A FAVOR" -> Selection.A_FAVOR;
+
+		case "EN CONTRA" -> Selection.EN_CONTRA;
+
+		case "PREFIERO NO CONTESTAR" -> Selection.PREFIERO_NO_CONTESTAR;
+
+		default -> throw new IllegalArgumentException("Unexpected value: " + this.selection);
+		};
+	}
 
 }

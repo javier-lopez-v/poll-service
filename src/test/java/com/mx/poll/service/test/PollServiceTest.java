@@ -20,6 +20,7 @@ import com.mx.poll.model.ClientDto;
 import com.mx.poll.model.ObservationResponse;
 import com.mx.poll.model.OptionResponse;
 import com.mx.poll.model.PollResponse;
+import com.mx.poll.model.Selection;
 import com.mx.poll.model.entity.Client;
 import com.mx.poll.model.entity.Observation;
 import com.mx.poll.model.entity.Option;
@@ -48,8 +49,10 @@ class PollServiceTest {
 	@Test
 	void getUserPollByDateTest() throws ParseException {
 
-		Client client = new Client(1L, "javier", Arrays.asList(new Poll(1L, "Ejemplo 1", new Date(), "service", true,
-				Arrays.asList(new Observation(1L, "Ejemplo")), Arrays.asList(new Option(1L, "", "")), null)));
+		Client client = new Client(1L, "javier",
+				Arrays.asList(new Poll(1L, "Ejemplo 1", new Date(), "service", true,
+						Arrays.asList(new Observation(1L, "Ejemplo")),
+						Arrays.asList(new Option(1L, "", Selection.A_FAVOR.getDisplayName())), null)));
 
 		when(pollRepositoryService.getPollByClienteAndDate(1L, formatDatesearch("2022-10-10"))).thenReturn(client);
 		assertNotNull(pollService.getUserPollByDate(1L, "2022-10-10"));
@@ -58,7 +61,7 @@ class PollServiceTest {
 	@Test
 	void createUserPollTest() throws ParseException {
 		ClientDto clientDto = new ClientDto(1L, "ejemplo", Arrays.asList(new PollResponse("", new Date(), "", false,
-				Arrays.asList(new OptionResponse("", "")), Arrays.asList(new ObservationResponse("")))));
+				Arrays.asList(new OptionResponse("", Selection.A_FAVOR)), Arrays.asList(new ObservationResponse("")))));
 		Client client = new Client(1L, "javier", Arrays.asList(new Poll(1L, "Ejemplo 1", new Date(), "service", true,
 				Arrays.asList(new Observation(1L, "Ejemplo")), Arrays.asList(new Option(1L, "", "")), null)));
 
@@ -69,9 +72,11 @@ class PollServiceTest {
 	@Test
 	void updateUserPollTest() throws ParseException {
 		ClientDto clientDto = new ClientDto(1L, "ejemplo", Arrays.asList(new PollResponse("", new Date(), "", false,
-				Arrays.asList(new OptionResponse("", "")), Arrays.asList(new ObservationResponse("")))));
-		Client client = new Client(1L, "javier", Arrays.asList(new Poll(1L, "Ejemplo 1", new Date(), "service", true,
-				Arrays.asList(new Observation(1L, "Ejemplo")), Arrays.asList(new Option(1L, "", "")), null)));
+				Arrays.asList(new OptionResponse("", Selection.A_FAVOR)), Arrays.asList(new ObservationResponse("")))));
+		Client client = new Client(1L, "javier",
+				Arrays.asList(new Poll(1L, "Ejemplo 1", new Date(), "service", true,
+						Arrays.asList(new Observation(1L, "Ejemplo")),
+						Arrays.asList(new Option(1L, "", Selection.A_FAVOR.getDisplayName())), null)));
 
 		when(pollRepositoryService.getClientById(1L)).thenReturn(client);
 		when(pollRepositoryService.createPoll(client.updateClientEntity(clientDto))).thenReturn(client);

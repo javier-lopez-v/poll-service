@@ -1,5 +1,13 @@
 CREATE SCHEMA IF NOT EXISTS serv_poll_service;
 
+/*
+DROP TABLE IF EXISTS serv_poll_service.option;
+DROP TABLE IF EXISTS serv_poll_service.observation;
+DROP TABLE IF EXISTS serv_poll_service.poll;
+DROP TABLE IF EXISTS serv_poll_service.client;
+
+
+
 CREATE TABLE serv_poll_service.client (
 	id_client bigserial NOT NULL,
 	"name" varchar(255) NULL,
@@ -19,7 +27,7 @@ CREATE TABLE serv_poll_service.poll (
 	CONSTRAINT fk1q2lcg8ch6ses2kyayxovkmk6 FOREIGN KEY (id_client) REFERENCES serv_poll_service.client(id_client)
 );
 
-CREATE TABLE serv_poll_service."option" (
+CREATE TABLE serv_poll_service.option (
 	id_option bigserial NOT NULL,
 	question varchar(255) NULL,
 	selection varchar(255) NULL,
@@ -58,16 +66,16 @@ VALUES(2, '2022-10-13', 'credit', false, 'encuesta credito', 2, 2);
 
 
 
-INSERT INTO serv_poll_service."option"
+INSERT INTO serv_poll_service.option
 (id_option, question, selection, id_poll)
 VALUES(1, '¿consideras juata la tasa de interes?', 'A FAVOR', 1);
-INSERT INTO serv_poll_service."option"
+INSERT INTO serv_poll_service.option
 (id_option, question, selection, id_poll)
 VALUES(2, '¿te a servico el credito', 'A FAVOR', 1);
-INSERT INTO serv_poll_service."option"
+INSERT INTO serv_poll_service.option
 (id_option, question, selection, id_poll)
 VALUES(3, '¿consideras juata la tasa de interes?', 'A FAVOR', 2);
-INSERT INTO serv_poll_service."option"
+INSERT INTO serv_poll_service.option
 (id_option, question, selection, id_poll)
 VALUES(4, '¿te a servico el credito', 'A FAVOR', 2);
 
@@ -87,4 +95,8 @@ INSERT INTO serv_poll_service.observation
 (id_observation, observation_info, id_poll)
 VALUES(4, 'plazos mas largos', 2);
 
+
+
+
+*/
 

@@ -17,7 +17,7 @@ public record ClientDto(Long idClient, String name, List<PollResponse> polls) {
 				poll.service(), poll.status(),
 				poll.observation().stream().map(observation -> new Observation(null, observation.observationInfo()))
 						.collect(Collectors.toList()),
-				poll.options().stream().map(option -> new Option(null, option.question(), option.selection()))
+				poll.options().stream().map(option -> new Option(null, option.question(), option.selection().getDisplayName()))
 						.collect(Collectors.toList()),
 				null)).collect(Collectors.toList()));
 		

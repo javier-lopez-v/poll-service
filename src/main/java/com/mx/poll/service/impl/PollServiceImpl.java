@@ -44,9 +44,9 @@ public class PollServiceImpl implements PollService {
 	}
 
 	@Override
-	public GenericResponse<String> createUserPoll(ClientDto clientResponse) {
-		pollRepositoryService.createPoll(clientResponse.createClientEntity());
-		return new GenericResponse<>(true, HttpStatus.OK.value(), "Success", "client created successfully");
+	public GenericResponse<Client> createUserPoll(ClientDto clientResponse) {
+		Client client = pollRepositoryService.createPoll(clientResponse.createClientEntity());
+		return new GenericResponse<>(true, HttpStatus.OK.value(), "Success", client);
 	}
 
 	@Override

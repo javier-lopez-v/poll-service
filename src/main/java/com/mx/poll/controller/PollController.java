@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mx.poll.model.ClientDto;
 import com.mx.poll.model.GenericResponse;
+import com.mx.poll.model.entity.Client;
 import com.mx.poll.service.PollService;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -48,8 +49,8 @@ public class PollController {
 	@ApiResponse(responseCode = "200", description = "se crea un nuevo registro", content = {
 			@Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = GenericResponse.class))) })
 	@PostMapping(path = "/poll")
-	public ResponseEntity<GenericResponse<String>> createUserPoll(@RequestBody ClientDto client) {
-		GenericResponse<String> genericResponse = pollService.createUserPoll(client);
+	public ResponseEntity<GenericResponse<Client>> createUserPoll(@RequestBody ClientDto client) {
+		GenericResponse<Client> genericResponse = pollService.createUserPoll(client);
 
 		return new ResponseEntity<>(genericResponse, HttpStatus.valueOf(genericResponse.code()));
 	}
