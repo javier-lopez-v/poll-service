@@ -2,6 +2,8 @@
 
 - [Introduction](#introduction)
 - [Dependencies](#Dependencies)
+- [Run](#Run)
+-[OpenAPI](#OpenAPI)
 - [Design](#design)
   * [Endpoints definitions](#endpoints-definitions)
     * [Get poll for id client and date](#get-poll-for-id-client-and-date)
@@ -17,9 +19,14 @@ Service of poll for client
   * PostgreSQL
 
 # Run
-  1.- Git clone
-  2.- cd poll-service
-  3.- mvn spring-boot:run
+  1.- Git clone \n
+  2.- cd poll-service \n
+  3.- mvn spring-boot:run \n
+
+# OpenAPI
+  ```bash
+    http://localhost:8080/swagger-ui/index.html#/
+  ```
 
 # Design
 The next information try to expose the application design
