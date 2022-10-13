@@ -19,9 +19,9 @@ Service of poll for client
   * PostgreSQL
 
 # Run
-  1.- Git clone \n
-  2.- cd poll-service \n
-  3.- mvn spring-boot:run \n
+  * Git clone 
+  * cd poll-service 
+  * mvn spring-boot:run 
 
 # OpenAPI
   ```bash
@@ -149,7 +149,7 @@ With its corresponding response:
 
 | method      | end-point                   | parameters  | body  |
 | ----------- | -----------                 | ----------- | ----------- |
-| ``POST``    | ``/poll/client/{id}``       | id          | ``{"name":"jose","polls":[{"title":"encuesta credito","date":"2022-10-10","service":"service 1","options":[{"question":"¿consideras juata la tasa de interes?","selection":"A FAVOR"},{"question":"¿te a servico el credito","selection":"A FAVOR"}],"observation":[{"observationInfo":"montos mas altos"},{"observationInfo":"plazos mas largos"}]}]}`` |
+| ``PUT``     | ``/poll/client/{id}``       | id          | ``{"name":"jose","polls":[{"title":"encuesta credito","date":"2022-10-10","service":"service 1","options":[{"question":"¿consideras juata la tasa de interes?","selection":"A FAVOR"},{"question":"¿te a servico el credito","selection":"A FAVOR"}],"observation":[{"observationInfo":"montos mas altos"},{"observationInfo":"plazos mas largos"}]}]}`` |
 
 
 The next example represents a request:
@@ -234,7 +234,7 @@ With its corresponding response:
 
 | method      | end-point                   | parameters  | body          |
 | ----------- | -----------                 | ----------- | -----------   |
-| ``POST``    | ``/poll/{idClient}``        | idClient    | N/A           |
+| ``DELETE``  | ``/poll/{idClient}``        | idClient    | N/A           |
 
 
 The next example represents a request:
