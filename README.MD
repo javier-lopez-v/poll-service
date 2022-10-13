@@ -140,7 +140,7 @@ With its corresponding response:
   "successful": true,
   "code": 200,
   "message": "Success",
-  "payload": "clien create success"
+  "payload": "client created successfully"
 }
 ```
 
