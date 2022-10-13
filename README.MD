@@ -2,8 +2,9 @@
 
 - [Introduction](#introduction)
 - [Dependencies](#Dependencies)
+- [Application](#Application)
 - [Run](#Run)
--[OpenAPI](#OpenAPI)
+- [OpenAPI](#OpenAPI)
 - [Design](#design)
   * [Endpoints definitions](#endpoints-definitions)
     * [Get poll for id client and date](#get-poll-for-id-client-and-date)
@@ -17,7 +18,7 @@ Service of poll for client
   * Spring boot 2.7.4
   * Java 17
   * PostgreSQL 12.11
-## Application
+# Application
 The application itself can be customized by the next configuration:
 
 A configuration example to run this service from local, : Modify datasource postgres in the file application.properties:
